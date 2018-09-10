@@ -16,6 +16,12 @@
             android:layout_height="wrap_content"
             android:hint="Sobrenome" />
 
+    <EditText
+        android:id="@+id/campo_cliente_cpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CPF" />
+
         <EditText
             android:id="@+id/campo_cliente_telefone"
             android:layout_width="match_parent"

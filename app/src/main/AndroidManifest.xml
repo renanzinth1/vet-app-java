@@ -20,20 +20,66 @@
             android:name=".activity.ClientesActivity"
             android:label="Lista de Clientes"
             android:parentActivityName=".activity.MainActivity">
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.FormClienteActivity"
+            android:label="Cadastro de Cliente"
+            android:parentActivityName=".activity.ClientesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ClientesActivity" />
+        </activity>
+        <activity
+            android:name=".activity.VeterinariosActivity"
+            android:label="Lista de Veterinários"
+            android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
 
         <activity
-            android:name=".activity.FormClienteActivity"
-            android:label="Cadastro de Cliente"
-            android:parentActivityName=".activity.ClientesActivity">
-
+            android:name=".activity.FormVeterinarioActivity"
+            android:label="Cadastro de Veterinário"
+            android:parentActivityName=".activity.VeterinariosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ClientesActivity" />
+                android:value=".activity.VeterinariosActivity" />
+        </activity>
+
+        <activity
+            android:name=".activity.MedicamentosActivity"
+            android:label="Lista de Medicamentos"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.FormMedicamentoActivity"
+            android:label="Cadastro de Medicamento"
+            android:parentActivityName=".activity.MedicamentosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MedicamentosActivity" />
+        </activity>
+        <activity android:name=".activity.EspeciesActivity"
+            android:label="Lista de Espécies"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+
+        <activity android:name=".activity.FormEspecieActivity"
+            android:label="Cadastro de Espécie"
+            android:parentActivityName=".activity.EspeciesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.EspeciesActivity" />
         </activity>
     </application>
 

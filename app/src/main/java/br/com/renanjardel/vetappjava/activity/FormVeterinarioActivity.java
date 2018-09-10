@@ -8,13 +8,12 @@ import android.widget.Toast;
 
 import br.com.renanjardel.vetappjava.R;
 
-public class FormClienteActivity extends AppCompatActivity {
+public class FormVeterinarioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_cliente);
-
+        setContentView(R.layout.activity_form_veterinario);
     }
 
     @Override
@@ -27,12 +26,13 @@ public class FormClienteActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
+        switch(item.getItemId()) {
             case R.id.menu_formulario_salvar:
 
-                Toast.makeText(FormClienteActivity.this, "Cliente salvo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FormVeterinarioActivity.this, "Veterinário Salvo!", Toast.LENGTH_SHORT).show();
                 finish();
         }
+
         return super.onOptionsItemSelected(item);
     }
 }
