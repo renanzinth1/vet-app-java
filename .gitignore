@@ -8,6 +8,7 @@
 /build
 /captures
 .externalNativeBuild
+RetrofitInicializador.java
 
 # Created by https://www.gitignore.io/api/java,gradle,android,androidstudio
 
