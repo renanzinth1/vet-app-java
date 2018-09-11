@@ -2,7 +2,7 @@ package br.com.renanjardel.vetappjava.modelo;
 
 import java.util.List;
 
-public class Cliente {
+public class Cliente extends Pessoa {
 
     private String cpf;
 

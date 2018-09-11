@@ -1,6 +1,6 @@
 package br.com.renanjardel.vetappjava.modelo;
 
-enum SexoAnimal {
+public enum SexoAnimal {
     MACHO,
     FEMEA;
 }

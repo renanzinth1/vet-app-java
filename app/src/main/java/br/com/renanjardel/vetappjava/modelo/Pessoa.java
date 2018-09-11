@@ -12,14 +12,14 @@ public class Pessoa {
 
     private String telefone;
 
-    private LocalDate dataNascimento;
+    private String dataNascimento;
 
     private Sexo sexo;
 
     public Pessoa() {
     }
 
-    public Pessoa(Long codigo, String nome, String sobrenome, String telefone, LocalDate dataNascimento, Sexo sexo) {
+    public Pessoa(Long codigo, String nome, String sobrenome, String telefone, String dataNascimento, Sexo sexo) {
         this.codigo = codigo;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -60,11 +60,11 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
