@@ -55,16 +55,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:hint="Masculino"
-                    android:text="MASCULINO" />
+                    android:hint="Masculino" />
 
                 <RadioButton
                     android:id="@+id/campo_cliente_feminino"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:hint="Feminino"
-                    android:text="FEMININO" />
+                    android:hint="Feminino" />
             </RadioGroup>
 
     </LinearLayout>

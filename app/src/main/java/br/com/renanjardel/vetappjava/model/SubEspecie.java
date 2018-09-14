@@ -1,4 +1,4 @@
-package br.com.renanjardel.vetappjava.modelo;
+package br.com.renanjardel.vetappjava.model;
 
 class SubEspecie {
 

@@ -1,6 +1,4 @@
-package br.com.renanjardel.vetappjava.modelo;
-
-import java.time.LocalDate;
+package br.com.renanjardel.vetappjava.model;
 
 public class Pessoa {
 

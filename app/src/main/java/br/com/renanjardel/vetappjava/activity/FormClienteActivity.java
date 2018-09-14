@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.renanjardel.vetappjava.R;
+
 import br.com.renanjardel.vetappjava.helper.FormularioClienteHelper;
-import br.com.renanjardel.vetappjava.modelo.Cliente;
+import br.com.renanjardel.vetappjava.model.Cliente;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,9 +42,9 @@ public class FormClienteActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_formulario_salvar:
 
-                Cliente cliente = helper.pegaAluno();
+                Cliente cliente = helper.pegaCliente();
 
-                Call call = new RetrofitInicializador().getClienteService().insere(cliente);
+                Call call = new RetrofitInicializador().getClienteService().registrar(cliente);
 
                 call.enqueue(new Callback() {
                     @Override
