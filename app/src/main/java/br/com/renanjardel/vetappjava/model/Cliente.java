@@ -34,4 +34,9 @@ public class Cliente extends Pessoa {
         this.listaAnimais = listaAnimais;
     }
 
+
+    @Override
+    public String toString() {
+        return super.getNome() +" " +super.getSobrenome();
+    }
 }

@@ -49,17 +49,28 @@ public class FormClienteActivity extends AppCompatActivity {
                 call.enqueue(new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) {
-                        Log.i("onResponse", "Requisição feita com sucesso!");
+                        int resposta = response.code();
+
+                        if(resposta == 201){
+                            Log.i("onResponse", "Requisição feita com sucesso!");
+                            Toast.makeText(FormClienteActivity.this, "Cliente salvo!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+                        else {
+                            Log.e("onFailure", "Requisão mal sucedida!");
+                            Toast.makeText(FormClienteActivity.this, "Cliente não salvo!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
                     }
 
                     @Override
                     public void onFailure(Call call, Throwable t) {
-                        Log.e("onFailure", "Requisão mal sucedida!");
+                        //Log.e("onFailure", "Requisão mal sucedida!");
+                        //Toast.makeText(FormClienteActivity.this, "Cliente não salvo!", Toast.LENGTH_SHORT).show();
+                        //finish();
                     }
                 });
-
-                Toast.makeText(FormClienteActivity.this, "Cliente salvo!", Toast.LENGTH_SHORT).show();
-                finish();
         }
         return super.onOptionsItemSelected(item);
     }

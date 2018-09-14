@@ -35,7 +35,10 @@ public class ClientesActivity extends AppCompatActivity {
                  startActivity(goCadastrarCliente);
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
         final ListView clientesView = findViewById(R.id.lista_clientes);
 
         Call<List<Cliente>> clientes = new RetrofitInicializador().getClienteService().listar();
@@ -43,8 +46,14 @@ public class ClientesActivity extends AppCompatActivity {
         clientes.enqueue(new Callback<List<Cliente>>() {
             @Override
             public void onResponse(Call<List<Cliente>> call, Response<List<Cliente>> response) {
-                ArrayAdapter<Cliente> adapter = new ArrayAdapter<Cliente>(this, android.R.layout.simple_list_item_1, response);
+                List<Cliente> clientes = response.body();
+                ArrayAdapter<Cliente> adapter = new ArrayAdapter<Cliente>
+                        (ClientesActivity.this, android.R.layout.simple_list_item_1, clientes);
                 clientesView.setAdapter(adapter);
+
+                //ArrayAdapter<Cliente> adapter = new ArrayAdapter<Cliente>
+                // (this, android.R.layout.simple_list_item_1, response);
+                //clientesView.setAdapter(adapter);
             }
 
             @Override
@@ -52,5 +61,7 @@ public class ClientesActivity extends AppCompatActivity {
 
             }
         });
+
+        super.onResume();
     }
 }
