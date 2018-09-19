@@ -1,6 +1,8 @@
 package br.com.renanjardel.vetappjava.model;
 
-public class Pessoa {
+import java.io.Serializable;
+
+public class Pessoa implements Serializable {
 
     private Long codigo;
 

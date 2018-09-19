@@ -1,8 +1,9 @@
 package br.com.renanjardel.vetappjava.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa implements Serializable {
 
     private String cpf;
 
@@ -34,9 +35,7 @@ public class Cliente extends Pessoa {
         this.listaAnimais = listaAnimais;
     }
 
-
-    @Override
-    public String toString() {
-        return super.getNome() +" " +super.getSobrenome();
+    public String getCpfFormatado() {
+        return this.cpf.substring(0,3) + "." + this.cpf.substring(3, 6) + "." + this.cpf.substring(6, 9) + "-" + this.cpf.substring(9, 11);
     }
 }
