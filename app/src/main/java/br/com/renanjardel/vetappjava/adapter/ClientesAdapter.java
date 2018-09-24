@@ -51,7 +51,6 @@ public class ClientesAdapter extends BaseAdapter {
         TextView campoNome = view.findViewById(R.id.cliente_item_nome);
         TextView campoSobrenome = view.findViewById(R.id.cliente_item_sobrenome);
         TextView campoCpf = view.findViewById(R.id.cliente_item_cpf);
-        //campoCpf.addTextChangedListener(MaskEditUtil.mask((EditText) campoCpf, MaskEditUtil.FORMAT_CPF));
 
         //if (campoNome != null)
         campoNome.setText(cliente.getNome());
