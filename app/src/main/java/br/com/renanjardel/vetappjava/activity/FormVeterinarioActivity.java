@@ -47,6 +47,10 @@ public class FormVeterinarioActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
+            case R.id.menu_formulario_editar:
+                helper.campoTrue(true);
+                break;
+
             case R.id.menu_formulario_salvar:
 
                 Veterinario veterinario = helper.pegaVeterinario();

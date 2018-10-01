@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_formulario_editar"
-        android:title="Salvar"
+        android:title="Editar"
         android:icon="@drawable/ic_editar"
         app:showAsAction="always"
         />

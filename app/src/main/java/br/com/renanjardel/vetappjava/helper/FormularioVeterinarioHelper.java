@@ -92,6 +92,7 @@ public class FormularioVeterinarioHelper {
                 }
 
                 FormularioVeterinarioHelper.this.veterinario = veterinario;
+                campoTrue(false);
 
             }
 
@@ -101,4 +102,15 @@ public class FormularioVeterinarioHelper {
             }
         });
     }
+
+    public void campoTrue(boolean value) {
+        campoNome.setEnabled(value);
+        campoSobrenome.setEnabled(value);
+        campoCfmv.setEnabled(value);
+        campoTelefone.setEnabled(value);
+        campodataNascimento.setEnabled(value);
+        campoMasculino.setEnabled(value);
+        campoFeminino.setEnabled(value);
+    }
+
 }
