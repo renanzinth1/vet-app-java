@@ -34,8 +34,6 @@ public class ClientesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clientes);
 
-        carregaLista();
-
         Button botaoNovoCliente = findViewById(R.id.novo_cliente);
 
         botaoNovoCliente.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +113,7 @@ public class ClientesActivity extends AppCompatActivity {
     }
 
     private void carregaLista() {
-        final ListView clientesView = findViewById(R.id.lista_clientes);
+        //final ListView clientesView = findViewById(R.id.lista_clientes);
 
         final Call<List<Cliente>> clientes = new RetrofitInicializador().getClienteService().listar();
 

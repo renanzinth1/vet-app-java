@@ -66,7 +66,6 @@ public class FormClienteActivity extends AppCompatActivity {
                     editar.enqueue(new Callback<Cliente>() {
                         @Override
                         public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-
                             Log.i("onResponse", "Requisição feita com sucesso!");
                             Toast.makeText(FormClienteActivity.this, "Cliente alterado!", Toast.LENGTH_SHORT).show();
                             finish();
