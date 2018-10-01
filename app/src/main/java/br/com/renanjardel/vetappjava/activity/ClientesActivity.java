@@ -10,18 +10,16 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Arrays;
 import java.util.List;
 
 import br.com.renanjardel.vetappjava.R;
 import br.com.renanjardel.vetappjava.adapter.ClientesAdapter;
 import br.com.renanjardel.vetappjava.model.Cliente;
-import br.com.renanjardel.vetappjava.model.Pessoa;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;
 import retrofit2.Call;
 import retrofit2.Callback;

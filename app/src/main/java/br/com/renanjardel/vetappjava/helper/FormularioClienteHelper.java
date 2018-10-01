@@ -41,7 +41,6 @@ public class FormularioClienteHelper {
     }
 
     public Cliente pegaCliente() {
-
         cliente.setNome(campoNome.getText().toString());
         cliente.setSobrenome(campoSobrenome.getText().toString());
         cliente.setCpf(campoCpf.getText().toString());
@@ -95,6 +94,8 @@ public class FormularioClienteHelper {
 
                 FormularioClienteHelper.this.cliente = cliente;
 
+                campoTrue(false);
+
             }
 
             @Override
@@ -102,5 +103,15 @@ public class FormularioClienteHelper {
 
             }
         });
+    }
+
+    public void campoTrue(boolean value) {
+        campoNome.setEnabled(value);
+        campoSobrenome.setEnabled(value);
+        campoCpf.setEnabled(value);
+        campoTelefone.setEnabled(value);
+        campodataNascimento.setEnabled(value);
+        campoMasculino.setEnabled(value);
+        campoFeminino.setEnabled(value);
     }
 }

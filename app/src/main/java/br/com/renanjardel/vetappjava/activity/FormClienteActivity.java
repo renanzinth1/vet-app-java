@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -31,12 +32,6 @@ public class FormClienteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_cliente);
 
-//        EditText campoCpf = findViewById(R.id.campo_cliente_cpf);
-//        campoCpf.addTextChangedListener(MaskEditUtil.mask(campoCpf, MaskEditUtil.FORMAT_CPF));
-//
-//        EditText campoTelefone = findViewById(R.id.campo_cliente_telefone);
-//        campoTelefone.addTextChangedListener(MaskEditUtil.mask(campoTelefone, MaskEditUtil.FORMAT_FONE));
-
         helper = new FormularioClienteHelper(this);
 
         Intent intent = getIntent();
@@ -58,6 +53,10 @@ public class FormClienteActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.menu_formulario_editar:
+                helper.campoTrue(true);
+                break;
+
             case R.id.menu_formulario_salvar:
 
                 Cliente cliente = helper.pegaCliente();

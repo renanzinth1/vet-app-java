@@ -42,7 +42,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
         <activity
             android:name=".activity.FormVeterinarioActivity"
             android:label="Cadastro de Veterinário"
@@ -51,7 +50,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.VeterinariosActivity" />
         </activity>
-
         <activity
             android:name=".activity.MedicamentosActivity"
             android:label="Lista de Medicamentos"
@@ -68,15 +66,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MedicamentosActivity" />
         </activity>
-        <activity android:name=".activity.EspeciesActivity"
+        <activity
+            android:name=".activity.EspeciesActivity"
             android:label="Lista de Espécies"
             android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
-        <activity android:name=".activity.FormEspecieActivity"
+        <activity
+            android:name=".activity.FormEspecieActivity"
             android:label="Cadastro de Espécie"
             android:parentActivityName=".activity.EspeciesActivity">
             <meta-data

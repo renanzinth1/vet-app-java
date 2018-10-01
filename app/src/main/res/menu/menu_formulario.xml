@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_formulario_editar"
+        android:title="Salvar"
+        android:icon="@drawable/ic_editar"
+        app:showAsAction="always"
+        />
+
+    <item
         android:id="@+id/menu_formulario_salvar"
         android:title="Salvar"
         android:icon="@drawable/ic_confirmar"
