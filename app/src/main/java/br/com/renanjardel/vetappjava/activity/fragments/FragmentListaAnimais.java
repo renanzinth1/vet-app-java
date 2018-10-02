@@ -1,4 +1,4 @@
-package br.com.renanjardel.vetappjava.fragments;
+package br.com.renanjardel.vetappjava.activity.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import br.com.renanjardel.vetappjava.R;
+
 public class FragmentListaAnimais extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.fragment_list_animais, container, false);
     }
 }

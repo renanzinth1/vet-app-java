@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Veterinária Unigranrio</string>
     <string name="title_activity_detalhes_cliente">Informações do Cliente</string>
+
+    <string-array name="title_tab">
+        <item>Cliente</item>
+        <item>Animais</item>
+    </string-array>
 </resources>

@@ -82,6 +82,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.EspeciesActivity" />
         </activity>
+        <activity android:name=".activity.ClienteAnimaisActivity"></activity>
     </application>
 
 </manifest>

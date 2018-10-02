@@ -6,19 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.Serializable;
 
 import br.com.renanjardel.vetappjava.R;
 
 import br.com.renanjardel.vetappjava.helper.FormularioClienteHelper;
 import br.com.renanjardel.vetappjava.model.Cliente;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;
-import br.com.renanjardel.vetappjava.util.MaskEditUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,7 +24,7 @@ public class FormClienteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_cliente);
+        setContentView(R.layout.fragment_form_cliente);
 
         helper = new FormularioClienteHelper(this);
 

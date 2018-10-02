@@ -34,6 +34,8 @@ public class ClientesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clientes);
 
+        carregaLista();
+
         Button botaoNovoCliente = findViewById(R.id.novo_cliente);
 
         botaoNovoCliente.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +52,7 @@ public class ClientesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> lista, View view, int position, long id) {
                 Cliente cliente = (Cliente) lista.getItemAtPosition(position);
-                Intent formCliente = new Intent(ClientesActivity.this, FormClienteActivity.class);
+                Intent formCliente = new Intent(ClientesActivity.this, ClienteAnimaisActivity.class);
                 formCliente.putExtra("cliente", cliente);
                 startActivity(formCliente);
             }
