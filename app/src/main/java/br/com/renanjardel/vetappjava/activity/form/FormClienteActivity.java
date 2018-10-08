@@ -1,6 +1,8 @@
-package br.com.renanjardel.vetappjava.activity;
+package br.com.renanjardel.vetappjava.activity.form;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,39 +22,55 @@ import retrofit2.Response;
 public class FormClienteActivity extends AppCompatActivity {
 
     private FormularioClienteHelper helper;
+    private Cliente cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_form_cliente);
+        setContentView(R.layout.activity_form_cliente);
 
         helper = new FormularioClienteHelper(this);
 
         Intent intent = getIntent();
-        Cliente cliente = (Cliente) intent.getSerializableExtra("cliente");
+        cliente = (Cliente) intent.getSerializableExtra("cliente");
 
         if (cliente != null)
             helper.preencheFormulario(cliente);
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        getMenuInflater().inflate(R.menu.menu_formulario, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_formulario, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        if (cliente == null) {
+            menu.findItem(R.id.menu_formulario_remover).setVisible(false);
+            menu.findItem(R.id.menu_formulario_editar).setVisible(false);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.menu_formulario_remover:
+                this.remover(cliente);
+                break;
+
             case R.id.menu_formulario_editar:
                 helper.campoTrue(true);
                 break;
 
             case R.id.menu_formulario_salvar:
-
                 Cliente cliente = helper.pegaCliente();
 
                 if (cliente.getCodigo() != null) {
@@ -102,5 +120,36 @@ public class FormClienteActivity extends AppCompatActivity {
                 }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void remover(final Cliente cliente) {
+        new AlertDialog
+                .Builder(FormClienteActivity.this)
+                .setTitle("Excluir")
+                .setIcon(R.drawable.ic_error_icon)
+                .setMessage("Deseja excluir o cliente " + cliente.getNome() + " " + cliente.getSobrenome() + "?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final Call<Void> removerCliente = new RetrofitInicializador().getClienteService().remover(cliente.getCodigo());
+                        removerCliente.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormClienteActivity.this, "Cliente removido!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormClienteActivity.this, "Cliente não removido!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Não", null)
+                .show();
     }
 }

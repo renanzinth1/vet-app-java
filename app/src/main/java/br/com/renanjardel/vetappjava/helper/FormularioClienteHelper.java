@@ -1,13 +1,11 @@
 package br.com.renanjardel.vetappjava.helper;
 
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import br.com.renanjardel.vetappjava.R;
-import br.com.renanjardel.vetappjava.activity.FormClienteActivity;
+import br.com.renanjardel.vetappjava.activity.form.FormClienteActivity;
 import br.com.renanjardel.vetappjava.model.Cliente;
 import br.com.renanjardel.vetappjava.model.Sexo;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;

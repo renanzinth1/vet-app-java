@@ -27,7 +27,7 @@
                 android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.FormClienteActivity"
+            android:name=".activity.form.FormClienteActivity"
             android:label="Cadastro de Cliente"
             android:parentActivityName=".activity.ClientesActivity">
             <meta-data
@@ -43,7 +43,7 @@
                 android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.FormVeterinarioActivity"
+            android:name=".activity.form.FormVeterinarioActivity"
             android:label="Cadastro de Veterinário"
             android:parentActivityName=".activity.VeterinariosActivity">
             <meta-data
@@ -59,7 +59,7 @@
                 android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.FormMedicamentoActivity"
+            android:name=".activity.form.FormMedicamentoActivity"
             android:label="Cadastro de Medicamento"
             android:parentActivityName=".activity.MedicamentosActivity">
             <meta-data
@@ -75,14 +75,22 @@
                 android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.FormEspecieActivity"
+            android:name=".activity.form.FormEspecieActivity"
             android:label="Cadastro de Espécie"
             android:parentActivityName=".activity.EspeciesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.EspeciesActivity" />
         </activity>
-        <activity android:name=".activity.ClienteAnimaisActivity"></activity>
+        <activity
+            android:name=".activity.SubEspeciesActivity"
+            android:label="Lista de Subespécies"
+            android:parentActivityName=".activity.form.FormEspecieActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.form.FormEspecieActivity" />
+        </activity>
+        <activity android:name=".activity.form.FormSubEspecieActivity"></activity>
     </application>
 
 </manifest>

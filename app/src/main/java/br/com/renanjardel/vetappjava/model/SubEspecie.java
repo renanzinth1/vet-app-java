@@ -1,6 +1,8 @@
 package br.com.renanjardel.vetappjava.model;
 
-class SubEspecie {
+import java.io.Serializable;
+
+public class SubEspecie implements Serializable {
 
     private Long codigo;
 
@@ -43,4 +45,8 @@ class SubEspecie {
         this.especie = especie;
     }
 
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
 }

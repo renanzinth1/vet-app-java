@@ -12,12 +12,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.renanjardel.vetappjava.R;
+import br.com.renanjardel.vetappjava.activity.form.FormClienteActivity;
 import br.com.renanjardel.vetappjava.adapter.ClientesAdapter;
 import br.com.renanjardel.vetappjava.model.Cliente;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;
@@ -52,7 +52,7 @@ public class ClientesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> lista, View view, int position, long id) {
                 Cliente cliente = (Cliente) lista.getItemAtPosition(position);
-                Intent formCliente = new Intent(ClientesActivity.this, ClienteAnimaisActivity.class);
+                Intent formCliente = new Intent(ClientesActivity.this, FormClienteActivity.class);
                 formCliente.putExtra("cliente", cliente);
                 startActivity(formCliente);
             }

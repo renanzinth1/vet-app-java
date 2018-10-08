@@ -4,15 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/campo_especie_nome"
+    <ListView
+        android:id="@+id/lista_subEspecie"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome"
-        android:textSize="50dp"/>
+        android:layout_height="match_parent" />
 
-    <ImageButton
-        android:id="@+id/listar_subEspecie"
+    <Button
+        android:id="@+id/nova_subEspecie"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
@@ -22,7 +20,7 @@
         android:background="@drawable/fundo"
         android:elevation="6dp"
         android:stateListAnimator="@null"
-        android:src="@drawable/ic_list_subespecie"
+        android:text="+"
         android:textColor="#ffffff"
         android:textSize="30sp" />
 

@@ -5,10 +5,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import br.com.renanjardel.vetappjava.R;
-import br.com.renanjardel.vetappjava.activity.FormVeterinarioActivity;
+import br.com.renanjardel.vetappjava.activity.form.FormVeterinarioActivity;
 import br.com.renanjardel.vetappjava.model.Veterinario;
 import br.com.renanjardel.vetappjava.model.Sexo;
-import br.com.renanjardel.vetappjava.model.Veterinario;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -17,9 +17,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.com.renanjardel.vetappjava.R;
+import br.com.renanjardel.vetappjava.activity.form.FormVeterinarioActivity;
 import br.com.renanjardel.vetappjava.adapter.VeterinariosAdapter;
-import br.com.renanjardel.vetappjava.model.Veterinario;
-import br.com.renanjardel.vetappjava.model.Veterinario;
 import br.com.renanjardel.vetappjava.model.Veterinario;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;
 import retrofit2.Call;
