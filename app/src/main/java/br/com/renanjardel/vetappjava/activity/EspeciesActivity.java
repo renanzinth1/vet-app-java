@@ -75,6 +75,17 @@ public class EspeciesActivity extends AppCompatActivity {
             }
         });
 
+        final MenuItem subespécies = menu.add("Subespécies");
+        subespécies.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                final Intent goToListarSubEspecies = new Intent(EspeciesActivity.this, SubEspeciesActivity.class);
+                goToListarSubEspecies.putExtra("especie", especie);
+                startActivity(goToListarSubEspecies);
+                return false;
+            }
+        });
+
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 

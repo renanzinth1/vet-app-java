@@ -25,7 +25,7 @@ public class FormEspecieActivity extends AppCompatActivity {
 
     private FormularioEspecieHelper helper;
 
-    private ImageButton btnListarSubEspecie;
+    private ImageButton btnListarSubEspecies;
     private Especie especie;
 
     @Override
@@ -34,7 +34,7 @@ public class FormEspecieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form_especie);
 
         helper = new FormularioEspecieHelper(this);
-        btnListarSubEspecie = findViewById(R.id.listar_subEspecie);
+        btnListarSubEspecies = findViewById(R.id.listar_subEspecie);
 
         Intent intent = getIntent();
         especie = (Especie) intent.getSerializableExtra("especie");
@@ -42,9 +42,9 @@ public class FormEspecieActivity extends AppCompatActivity {
         if (especie != null)
             helper.preencheFormulario(especie);
         else
-            btnListarSubEspecie.setVisibility(View.GONE);
+            btnListarSubEspecies.setVisibility(View.GONE);
 
-        btnListarSubEspecie.setOnClickListener(new View.OnClickListener() {
+        btnListarSubEspecies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FormEspecieActivity.this, SubEspeciesActivity.class);

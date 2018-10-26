@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import br.com.renanjardel.vetappjava.R;
 
+import br.com.renanjardel.vetappjava.activity.AnimaisActivity;
 import br.com.renanjardel.vetappjava.helper.FormularioClienteHelper;
 import br.com.renanjardel.vetappjava.model.Cliente;
 import br.com.renanjardel.vetappjava.retrofit.RetrofitInicializador;
@@ -22,6 +25,8 @@ import retrofit2.Response;
 public class FormClienteActivity extends AppCompatActivity {
 
     private FormularioClienteHelper helper;
+
+    private ImageButton btnListarAnimais;
     private Cliente cliente;
 
     @Override
@@ -30,12 +35,24 @@ public class FormClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form_cliente);
 
         helper = new FormularioClienteHelper(this);
+        btnListarAnimais = findViewById(R.id.listar_animais);
 
         Intent intent = getIntent();
         cliente = (Cliente) intent.getSerializableExtra("cliente");
 
         if (cliente != null)
             helper.preencheFormulario(cliente);
+        else
+            btnListarAnimais.setVisibility(View.GONE);
+
+        btnListarAnimais.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent intent = new Intent(FormClienteActivity.this, AnimaisActivity.class);
+                intent.putExtra("cliente", cliente);
+                startActivity(intent);
+            }
+        });
 
     }
 
