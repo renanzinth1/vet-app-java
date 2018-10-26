@@ -85,12 +85,13 @@
         <activity
             android:name=".activity.SubEspeciesActivity"
             android:label="Lista de Subespécies"
-            android:parentActivityName=".activity.form.FormEspecieActivity">
+            android:parentActivityName=".activity.EspeciesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.form.FormEspecieActivity" />
+                android:value=".activity.EspeciesActivity" />
         </activity>
-        <activity android:name=".activity.form.FormSubEspecieActivity"></activity>
+        <activity android:name=".activity.form.FormSubEspecieActivity" />
+        <activity android:name=".activity.AnimaisActivity"></activity>
     </application>
 
 </manifest>
