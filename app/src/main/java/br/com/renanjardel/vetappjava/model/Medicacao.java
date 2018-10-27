@@ -1,6 +1,8 @@
 package br.com.renanjardel.vetappjava.model;
 
-public class Medicacao {
+import java.io.Serializable;
+
+public class Medicacao implements Serializable {
 
     private Long codigo;
 

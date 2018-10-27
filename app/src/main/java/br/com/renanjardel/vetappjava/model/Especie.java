@@ -9,17 +9,17 @@ public class Especie implements Serializable {
 
     private String nome;
 
-    private List<SubEspecie> listaSubEspecies;
+    //private List<SubEspecie> listaSubEspecies;
 
     public Especie() {
         super();
     }
 
-    public Especie(Long codigo, String nome, List<SubEspecie> listaSubEspecies) {
+    public Especie(Long codigo, String nome/*, List<SubEspecie> listaSubEspecies*/) {
         super();
         this.codigo = codigo;
         this.nome = nome;
-        this.listaSubEspecies = listaSubEspecies;
+        //this.listaSubEspecies = listaSubEspecies;
     }
 
     public Long getCodigo() {
@@ -38,13 +38,13 @@ public class Especie implements Serializable {
         this.nome = nome;
     }
 
-    public List<SubEspecie> getListaSubEspecies() {
-        return listaSubEspecies;
-    }
-
-    public void setListaSubEspecies(List<SubEspecie> listaSubEspecies) {
-        this.listaSubEspecies = listaSubEspecies;
-    }
+//    public List<SubEspecie> getListaSubEspecies() {
+//        return listaSubEspecies;
+//    }
+//
+//    public void setListaSubEspecies(List<SubEspecie> listaSubEspecies) {
+//        this.listaSubEspecies = listaSubEspecies;
+//    }
 
     @Override
     public String toString() {

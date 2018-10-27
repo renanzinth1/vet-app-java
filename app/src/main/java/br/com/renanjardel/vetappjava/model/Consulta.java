@@ -3,10 +3,11 @@ package br.com.renanjardel.vetappjava.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Consulta {
+public class Consulta implements Serializable {
 
     private Long codigo;
 

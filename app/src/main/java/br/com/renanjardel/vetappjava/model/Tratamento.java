@@ -2,9 +2,10 @@ package br.com.renanjardel.vetappjava.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Tratamento {
+public class Tratamento implements Serializable {
 
     private Long codigo;
 

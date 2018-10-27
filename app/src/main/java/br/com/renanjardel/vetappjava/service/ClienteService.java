@@ -2,6 +2,7 @@ package br.com.renanjardel.vetappjava.service;
 
 import java.util.List;
 
+import br.com.renanjardel.vetappjava.model.Animal;
 import br.com.renanjardel.vetappjava.model.Cliente;
 import br.com.renanjardel.vetappjava.model.Pessoa;
 import retrofit2.Call;
@@ -19,6 +20,9 @@ public interface ClienteService {
 
     @GET("/clientes")
     Call<List<Cliente>> listar();
+
+    @GET("/clientes/{codigo}/animais")
+    Call<List<Animal>> listarAnimais(@Path("codigo") Long codigo);
 
     @PUT("/clientes/{codigo}")
     Call<Cliente> editar(@Path("codigo") long codigo, @Body Cliente cliente);

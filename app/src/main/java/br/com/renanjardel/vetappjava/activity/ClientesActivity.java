@@ -75,6 +75,17 @@ public class ClientesActivity extends AppCompatActivity {
             }
         });
 
+        final MenuItem animais = menu.add("Animais");
+        animais.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                final Intent goToListarAnimais = new Intent(ClientesActivity.this, AnimaisActivity.class);
+                goToListarAnimais.putExtra("cliente", cliente);
+                startActivity(goToListarAnimais);
+                return false;
+            }
+        });
+
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 

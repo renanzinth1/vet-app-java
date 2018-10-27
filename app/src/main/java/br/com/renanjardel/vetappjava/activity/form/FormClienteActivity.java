@@ -48,7 +48,7 @@ public class FormClienteActivity extends AppCompatActivity {
         btnListarAnimais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(FormClienteActivity.this, AnimaisActivity.class);
+                Intent intent = new Intent(FormClienteActivity.this, AnimaisActivity.class);
                 intent.putExtra("cliente", cliente);
                 startActivity(intent);
             }

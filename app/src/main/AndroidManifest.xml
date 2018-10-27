@@ -90,8 +90,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.EspeciesActivity" />
         </activity>
-        <activity android:name=".activity.form.FormSubEspecieActivity" />
-        <activity android:name=".activity.AnimaisActivity"></activity>
+        <activity
+            android:name=".activity.form.FormSubEspecieActivity"
+            android:label="Cadastro de SubEspécies"
+            android:parentActivityName=".activity.EspeciesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.EspeciesActivity" />
+        </activity>
+        <activity android:name=".activity.AnimaisActivity"
+            android:label="Lista de Animais"
+            android:parentActivityName=".activity.ClientesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ClientesActivity" />
+        </activity>
     </application>
 
 </manifest>

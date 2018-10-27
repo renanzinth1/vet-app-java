@@ -1,14 +1,15 @@
 package br.com.renanjardel.vetappjava.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-class Animal {
+public class Animal implements Serializable {
 
     private Long codigo;
 
     private String nome;
 
-    private LocalDate dataNascimento;
+    private String dataNascimento;
 
     private SexoAnimal sexo;
 
@@ -20,7 +21,7 @@ class Animal {
         super();
     }
 
-    public Animal(Long codigo, String nome, LocalDate dataNascimento, SexoAnimal sexo, SubEspecie subEspecie, Cliente cliente) {
+    public Animal(Long codigo, String nome, String dataNascimento, SexoAnimal sexo, SubEspecie subEspecie, Cliente cliente) {
         this.codigo = codigo;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -45,11 +46,11 @@ class Animal {
         this.nome = nome;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -75,5 +76,10 @@ class Animal {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return this.getNome();
     }
 }
