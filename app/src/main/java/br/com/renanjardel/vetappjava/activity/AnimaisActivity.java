@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.List;
 
 import br.com.renanjardel.vetappjava.R;
+import br.com.renanjardel.vetappjava.activity.form.FormAnimalActivity;
 import br.com.renanjardel.vetappjava.model.Animal;
 import br.com.renanjardel.vetappjava.model.Cliente;
 import br.com.renanjardel.vetappjava.model.SubEspecie;
@@ -34,7 +37,27 @@ public class AnimaisActivity extends AppCompatActivity {
 
         carregaLista();
 
+        Button botaoNovoAnimal = findViewById(R.id.novo_animal);
+
+        botaoNovoAnimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goCadastrarAnimal = new Intent(AnimaisActivity.this, FormAnimalActivity.class);
+                goCadastrarAnimal.putExtra("cliente", cliente);
+                startActivity(goCadastrarAnimal);
+            }
+        });
+
         animaisView = findViewById(R.id.lista_animal);
+        animaisView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Animal animal = (Animal) parent.getItemAtPosition(position);
+                final Intent formAnimal = new Intent(AnimaisActivity.this, FormAnimalActivity.class);
+                formAnimal.putExtra("animal", animal);
+                startActivity(formAnimal);
+            }
+        });
 
         registerForContextMenu(animaisView);
 
