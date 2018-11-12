@@ -1,6 +1,8 @@
 package br.com.renanjardel.vetappjava.activity.form;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,7 +39,8 @@ public class FormAnimalActivity extends AppCompatActivity {
     private Spinner spinnerEspecies;
     private Spinner spinnerSubEspecies;
 
-    private long selectedItem;
+    private SubEspecie selectedObjectItem;
+
     private FormularioAnimalHelper helper;
 
     @Override
@@ -73,6 +77,88 @@ public class FormAnimalActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()) {
+            case R.id.menu_formulario_remover:
+                this.remover(animal);
+                break;
+
+            case R.id.menu_formulario_editar:
+                helper.campoTrue(true);
+                break;
+
+            case R.id.menu_formulario_salvar:
+                animal.setCliente(cliente);
+                animal = helper.pegaAnimal();
+
+                if (animal.getCodigo() != null) {
+                    //DO SOMETHING;
+                } else {
+
+                    //animal.setCliente(cliente);
+                    final Call<Void> salvarCall = new RetrofitInicializador().getAnimalService().salvar(animal);
+
+                    salvarCall.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            int resposta = response.code();
+
+                            if (resposta == 201) {
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormAnimalActivity.this, "Animal salvo!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormAnimalActivity.this, "Animal não salvo!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+
+                        }
+                    });
+
+                }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void remover(final Animal animal) {
+        new AlertDialog
+                .Builder(FormAnimalActivity.this)
+                .setTitle("Excluir")
+                .setIcon(R.drawable.ic_error_icon)
+                .setMessage("Deseja excluir o Animal " + animal.getNome() + "?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final Call<Void> removerAnimal = new RetrofitInicializador().getAnimalService().remover(animal.getCodigo());
+                        removerAnimal.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormAnimalActivity.this, "Animal removido!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormAnimalActivity.this, "Animal não removido!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Não", null)
+                .show();
+    }
+
     public void carregaSpinnerEspecieESubEspecie() {
 
         final Call<List<Especie>> especieCall = new RetrofitInicializador().getEspecieService().listar();
@@ -100,8 +186,22 @@ public class FormAnimalActivity extends AppCompatActivity {
 
                                 final List<SubEspecie> subespecies = response.body();
 
-                                final ArrayAdapter<SubEspecie> adapter = new ArrayAdapter<>(FormAnimalActivity.this, android.R.layout.simple_dropdown_item_1line, subespecies);
+                                final ArrayAdapter<SubEspecie> adapter = new ArrayAdapter<>(FormAnimalActivity.this, android.R.layout.simple_list_item_1, subespecies);
                                 spinnerSubEspecies.setAdapter(adapter);
+
+                                spinnerSubEspecies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                        SubEspecie subEspecieSelecionada = (SubEspecie) parent.getItemAtPosition(position);
+                                        //helper.setSubEspecie(subEspecieSelecionada);
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> parent) {
+
+                                    }
+                                });
+
                             }
 
                             @Override
@@ -116,31 +216,6 @@ public class FormAnimalActivity extends AppCompatActivity {
 
                     }
                 });
-
-//                selectedItemId = spinnerEspecies.getSelectedItemPosition();
-
-//                final Call<List<SubEspecie>> subEspecieCall = new RetrofitInicializador().getEspecieService().listarSubEspecies(selectedItemId);
-//
-//                subEspecieCall.enqueue(new Callback<List<SubEspecie>>() {
-//                    @Override
-//                    public void onResponse(Call<List<SubEspecie>> call, Response<List<SubEspecie>> response) {
-//
-//                        final List<SubEspecie> subEspecies = response.body();
-//
-//                        for(SubEspecie subEsp : subEspecies) {
-//                            Log.i("TAG:", subEsp.getNome());
-//                        }
-////
-////                        final ArrayAdapter<SubEspecie> adapter = new ArrayAdapter<>(FormAnimalActivity.this, android.R.layout.simple_dropdown_item_1line, subEspecies);
-////                        spinnerSubEspecies.setAdapter(adapter);
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<List<SubEspecie>> call, Throwable t) {
-//
-//                    }
-//                });
             }
 
             @Override
@@ -148,6 +223,5 @@ public class FormAnimalActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
