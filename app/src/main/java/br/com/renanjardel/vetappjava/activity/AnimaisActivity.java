@@ -1,14 +1,19 @@
 package br.com.renanjardel.vetappjava.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -61,6 +66,53 @@ public class AnimaisActivity extends AppCompatActivity {
 
         registerForContextMenu(animaisView);
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        final Animal animal = (Animal) animaisView.getItemAtPosition(info.position);
+
+        final MenuItem remover = menu.add("Remover");
+        remover.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                callExcludeAlertDialog(animal);
+                return false;
+            }
+        });
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    public void callExcludeAlertDialog(final Animal animal) {
+        new AlertDialog
+                .Builder(AnimaisActivity.this)
+                .setTitle("Excluir")
+                .setIcon(R.drawable.ic_error_icon)
+                .setMessage("Deseja excluir o Animal " + animal.getNome() + "?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final Call<Void> removerAnimal = new RetrofitInicializador().getAnimalService().remover(animal.getCodigo());
+                        removerAnimal.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(AnimaisActivity.this, "Animal removido!", Toast.LENGTH_SHORT).show();
+                                carregaLista();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(AnimaisActivity.this, "Animal não removido!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Não", null)
+                .show();
     }
 
     @Override

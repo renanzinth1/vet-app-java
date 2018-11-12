@@ -36,11 +36,6 @@ public class FormAnimalActivity extends AppCompatActivity {
     private Cliente cliente;
     private Animal animal;
 
-    private Spinner spinnerEspecies;
-    private Spinner spinnerSubEspecies;
-
-    private SubEspecie selectedObjectItem;
-
     private FormularioAnimalHelper helper;
 
     @Override
@@ -48,20 +43,18 @@ public class FormAnimalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_animal);
 
+        helper = new FormularioAnimalHelper(this);
         Intent intent = getIntent();
+
+        helper.carregaSpinnerEspecieESubEspecie();
 
         //Pegando o objeto cliente do formulário
         cliente = (Cliente) intent.getSerializableExtra("cliente");
         //Pegando o objeto animal da lista de animais ao selecionar
         animal = (Animal) intent.getSerializableExtra("animal");
 
-//        if(animal != null)
-//            helper.preencherFomulario(animal);
-
-        carregaSpinnerEspecieESubEspecie();
-
-        spinnerEspecies = findViewById(R.id.spinner_especies);
-        spinnerSubEspecies = findViewById(R.id.spinner_subEspecies);
+        if(animal != null)
+            helper.preencherFomulario(animal);
 
     }
 
@@ -90,14 +83,36 @@ public class FormAnimalActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_formulario_salvar:
-                animal.setCliente(cliente);
                 animal = helper.pegaAnimal();
 
                 if (animal.getCodigo() != null) {
-                    //DO SOMETHING;
+
+                    Call<Animal> editar = new RetrofitInicializador().getAnimalService().editar(animal.getCodigo(), animal);
+                    editar.enqueue(new Callback<Animal>() {
+                        @Override
+                        public void onResponse(Call<Animal> call, Response<Animal> response) {
+                            int resposta = response.code();
+
+                            if(resposta == 202){
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormAnimalActivity.this, "Animal alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormAnimalActivity.this, "Animal não alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Animal> call, Throwable t) {
+
+                        }
+                    });
+
                 } else {
 
-                    //animal.setCliente(cliente);
+                    animal.setCliente(cliente);
                     final Call<Void> salvarCall = new RetrofitInicializador().getAnimalService().salvar(animal);
 
                     salvarCall.enqueue(new Callback<Void>() {
@@ -157,71 +172,5 @@ public class FormAnimalActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Não", null)
                 .show();
-    }
-
-    public void carregaSpinnerEspecieESubEspecie() {
-
-        final Call<List<Especie>> especieCall = new RetrofitInicializador().getEspecieService().listar();
-
-        especieCall.enqueue(new Callback<List<Especie>>() {
-            @Override
-            public void onResponse(Call<List<Especie>> call, Response<List<Especie>> response) {
-
-                List<Especie> especies = response.body();
-
-                ArrayAdapter<Especie> adapter = new ArrayAdapter<Especie> (FormAnimalActivity.this, android.R.layout.simple_list_item_1, especies);
-                spinnerEspecies.setAdapter(adapter);
-
-                spinnerEspecies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                        Especie especie = (Especie) parent.getItemAtPosition(position);
-
-                        final Call<List<SubEspecie>> subEspecieCall = new RetrofitInicializador().getEspecieService().listarSubEspecies(especie.getCodigo());
-
-                        subEspecieCall.enqueue(new Callback<List<SubEspecie>>() {
-                            @Override
-                            public void onResponse(Call<List<SubEspecie>> call, Response<List<SubEspecie>> response) {
-
-                                final List<SubEspecie> subespecies = response.body();
-
-                                final ArrayAdapter<SubEspecie> adapter = new ArrayAdapter<>(FormAnimalActivity.this, android.R.layout.simple_list_item_1, subespecies);
-                                spinnerSubEspecies.setAdapter(adapter);
-
-                                spinnerSubEspecies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                    @Override
-                                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                        SubEspecie subEspecieSelecionada = (SubEspecie) parent.getItemAtPosition(position);
-                                        //helper.setSubEspecie(subEspecieSelecionada);
-                                    }
-
-                                    @Override
-                                    public void onNothingSelected(AdapterView<?> parent) {
-
-                                    }
-                                });
-
-                            }
-
-                            @Override
-                            public void onFailure(Call<List<SubEspecie>> call, Throwable t) {
-
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call<List<Especie>> call, Throwable t) {
-
-            }
-        });
     }
 }

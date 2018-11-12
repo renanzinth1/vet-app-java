@@ -95,16 +95,22 @@ public class FormClienteActivity extends AppCompatActivity {
                     editar.enqueue(new Callback<Cliente>() {
                         @Override
                         public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-                            Log.i("onResponse", "Requisição feita com sucesso!");
-                            Toast.makeText(FormClienteActivity.this, "Cliente alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+                            int resposta = response.code();
+
+                            if(resposta == 202){
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormClienteActivity.this, "Cliente alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormClienteActivity.this, "Cliente não alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<Cliente> call, Throwable t) {
-                            Log.e("onFailure", "Requisão mal sucedida!");
-                            Toast.makeText(FormClienteActivity.this, "Cliente não alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+
                         }
                     });
 

@@ -76,16 +76,22 @@ public class FormSubEspecieActivity extends AppCompatActivity {
                     editar.enqueue(new Callback<SubEspecie>() {
                         @Override
                         public void onResponse(Call<SubEspecie> call, Response<SubEspecie> response) {
-                            Log.i("onResponse", "Requisição feita com sucesso!");
-                            Toast.makeText(FormSubEspecieActivity.this, "Subespecie alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+                            int resposta = response.code();
+
+                            if(resposta == 202){
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormSubEspecieActivity.this, "SubEspecie alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormSubEspecieActivity.this, "SubEspecie não alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<SubEspecie> call, Throwable t) {
-                            Log.e("onFailure", "Requisão mal sucedida!");
-                            Toast.makeText(FormSubEspecieActivity.this, "Subespecie não alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+
                         }
                     });
 
@@ -102,11 +108,11 @@ public class FormSubEspecieActivity extends AppCompatActivity {
 
                             if (resposta == 201) {
                                 Log.i("onResponse", "Requisição feita com sucesso!");
-                                Toast.makeText(FormSubEspecieActivity.this, "Subespecie salvo!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FormSubEspecieActivity.this, "SubEspecie salvo!", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
                                 Log.e("onFailure", "Requisão mal sucedida!");
-                                Toast.makeText(FormSubEspecieActivity.this, "Subespecie não salvo!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FormSubEspecieActivity.this, "SubEspecie não salvo!", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }

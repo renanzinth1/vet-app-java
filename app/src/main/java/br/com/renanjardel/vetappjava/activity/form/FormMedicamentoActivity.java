@@ -73,16 +73,22 @@ public class FormMedicamentoActivity extends AppCompatActivity {
                     editar.enqueue(new Callback<Medicamento>() {
                         @Override
                         public void onResponse(Call<Medicamento> call, Response<Medicamento> response) {
-                            Log.i("onResponse", "Requisição feita com sucesso!");
-                            Toast.makeText(FormMedicamentoActivity.this, "Medicamento alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+                            int resposta = response.code();
+
+                            if(resposta == 202){
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormMedicamentoActivity.this, "Medicamento alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormMedicamentoActivity.this, "Medicamento não alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<Medicamento> call, Throwable t) {
-                            Log.e("onFailure", "Requisão mal sucedida!");
-                            Toast.makeText(FormMedicamentoActivity.this, "Medicamento não alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+
                         }
                     });
 

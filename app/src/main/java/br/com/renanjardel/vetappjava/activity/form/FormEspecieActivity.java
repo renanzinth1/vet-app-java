@@ -93,16 +93,22 @@ public class FormEspecieActivity extends AppCompatActivity {
                     editar.enqueue(new Callback<Especie>() {
                         @Override
                         public void onResponse(Call<Especie> call, Response<Especie> response) {
-                            Log.i("onResponse", "Requisição feita com sucesso!");
-                            Toast.makeText(FormEspecieActivity.this, "Especie alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+                            int resposta = response.code();
+
+                            if(resposta == 202){
+                                Log.i("onResponse", "Requisição feita com sucesso!");
+                                Toast.makeText(FormEspecieActivity.this, "Especie alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Log.e("onFailure", "Requisão mal sucedida!");
+                                Toast.makeText(FormEspecieActivity.this, "Especie não alterado!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<Especie> call, Throwable t) {
-                            Log.e("onFailure", "Requisão mal sucedida!");
-                            Toast.makeText(FormEspecieActivity.this, "Especie não alterado!", Toast.LENGTH_SHORT).show();
-                            finish();
+
                         }
                     });
 

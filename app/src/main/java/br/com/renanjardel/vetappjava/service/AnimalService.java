@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface AnimalService {
 
-    @POST("/animal")
+    @POST("/animais")
     Call<Void> salvar(@Body Animal animal);
 
     @GET("/animais")
