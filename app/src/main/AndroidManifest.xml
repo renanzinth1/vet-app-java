@@ -92,7 +92,7 @@
         </activity>
         <activity
             android:name=".activity.form.FormSubEspecieActivity"
-            android:label="Cadastro de SubEspécies"
+            android:label="Cadastro de SubEspécie"
             android:parentActivityName=".activity.EspeciesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -106,7 +106,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.ClientesActivity" />
         </activity>
-        <activity android:name=".activity.form.FormAnimalActivity"></activity>
+
+        <activity
+            android:name=".activity.form.FormAnimalActivity"
+            android:label="Cadastro de Animal"
+            android:parentActivityName=".activity.ClientesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ClientesActivity" />
+        </activity>
     </application>
 
 </manifest>
