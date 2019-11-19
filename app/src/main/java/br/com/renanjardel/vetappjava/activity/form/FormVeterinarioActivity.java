@@ -125,11 +125,7 @@ public class FormVeterinarioActivity extends AppCompatActivity {
                         }
                     });
                 }
-
-                Toast.makeText(FormVeterinarioActivity.this, "Veterinário Salvo!", Toast.LENGTH_SHORT).show();
-                finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 

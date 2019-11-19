@@ -2,104 +2,104 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:elevation="10dp"
+            app:cardUseCompatPadding="true">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                app:cardUseCompatPadding="true">
+            <ImageButton
+                android:id="@+id/botao_listar_consulta"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_consulta" />
 
-                <ImageButton
-                    android:id="@+id/botao_listar_consulta"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_consulta" />
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                app:cardUseCompatPadding="true">
-
-
-                <ImageButton
-                    android:id="@+id/botao_listar_cliente"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_cliente" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                app:cardUseCompatPadding="true">
-
-
-                <ImageButton
-                    android:id="@+id/botao_listar_veterinario"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_veterinario" />
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout> <!--Linha horizontal superior-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:elevation="10dp"
+            app:cardUseCompatPadding="true">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                app:cardUseCompatPadding="true">
 
-                <ImageButton
-                    android:id="@+id/botao_listar_medicamento"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_medicamento" />
+            <ImageButton
+                android:id="@+id/botao_listar_cliente"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_cliente" />
 
-            </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                app:cardUseCompatPadding="true">
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            app:cardUseCompatPadding="true">
 
-                <ImageButton
-                    android:id="@+id/botao_listar_especie"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_especie" />
 
-            </android.support.v7.widget.CardView>
+            <ImageButton
+                android:id="@+id/botao_listar_veterinario"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_veterinario" />
 
-        </LinearLayout> <!--Linha horizontal inferior-->
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout> <!--Linha horizontal superior-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageButton
+                android:id="@+id/botao_listar_medicamento"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_medicamento" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageButton
+                android:id="@+id/botao_listar_especie"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_especie" />
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout> <!--Linha horizontal inferior-->
 
 </LinearLayout>
